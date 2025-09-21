@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InterviewGenerator"
         mc:Ignorable="d"
-        Title="Interview Generator" Height="450" Width="800">
+        Title="Interview Generator" Height="450" Width="900"
+        ThemeMode="System">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -34,8 +35,10 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Left" >
             <Button Margin="5" Padding="5">Add Question To Interview</Button>
+            <Button Margin="5" Padding="5">Add New Category</Button>
+            <Button Margin="5" Padding="5">Add New Question</Button>
             <Button Margin="5" Padding="5">Save Interview Template</Button>
             <Button Margin="5" Padding="5">See Saved Templates</Button>
             <Button Margin="5" Padding="5">Export Interview</Button>
@@ -55,6 +58,7 @@
             </Grid.ColumnDefinitions>
             <ListView  Grid.Column="0">
                 <ListView.View>
+                    
                     <GridView>
                         <GridViewColumn Header="Categories" Width="200" DisplayMemberBinding="{Binding CategoryName}"/>
                     </GridView>

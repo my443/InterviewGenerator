@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using InterviewGenerator.Models;
 
 namespace InterviewGenerator.Data
 {
@@ -13,8 +9,9 @@ namespace InterviewGenerator.Data
             : base(options)
         {
         }
-
-        // Add DbSets for your entities here
-        // public DbSet<User> Users { get; set; }
+        
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Interview> Interviews { get; set; }
     }
 }

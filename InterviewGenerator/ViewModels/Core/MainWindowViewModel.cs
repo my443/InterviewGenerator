@@ -41,6 +41,8 @@ namespace InterviewGenerator.ViewModels
             var db = factory.CreateDbContext(FilePath);
             db.Database.EnsureCreated();
 
+            DbContext = db;
+
             ShowCategoryItemCommand = new RelayCommand(_ => ShowCategoryScreen());
             ShowMainScreenCommand = new RelayCommand(_ => ShowMainScreen());
 
@@ -49,7 +51,7 @@ namespace InterviewGenerator.ViewModels
 
         private void ShowCategoryScreen()
         {
-            var viewModel = new CategoryViewModel();
+            var viewModel = new CategoryViewModel(DbContext);
             viewModel.Done = ShowMainScreen;
             CurrentViewModel = viewModel;
         }

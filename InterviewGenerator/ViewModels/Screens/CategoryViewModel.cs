@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InterviewGenerator.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,7 @@ namespace InterviewGenerator.ViewModels.Screens
         public DbContext DbContext { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }
-
-
+        public Category Category { get; set; }
 
         public CategoryViewModel(DbContext dbContext)
         {

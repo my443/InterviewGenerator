@@ -49,9 +49,9 @@ namespace InterviewGenerator.ViewModels
             ShowMainScreen();
         }
 
-        private void ShowCategoryScreen()
+        private void ShowCategoryScreen(Category selectedCategory = null)
         {
-            var viewModel = new CategoryViewModel(DbContext);
+            var viewModel = new CategoryViewModel(DbContext, selectedCategory);
             viewModel.Done = ShowMainScreen;
             CurrentViewModel = viewModel;
         }

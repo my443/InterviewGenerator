@@ -19,8 +19,9 @@ namespace InterviewGenerator.ViewModels.Screens
         public string Description { get; set; }
         public Category Category { get; set; }
 
-        public CategoryViewModel(DbContext dbContext)
+        public CategoryViewModel(DbContext dbContext, Category category)
         {
+            Category = category;
             DbContext = dbContext;
             SaveCommand = new RelayCommand(_ => Save());
             CancelCommand = new RelayCommand(_ => Cancel());

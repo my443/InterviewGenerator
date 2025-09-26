@@ -12,15 +12,20 @@ namespace InterviewGenerator.ViewModels.Screens
 {
     public class HomeScreenViewModel
     {
-        public Action ShowCategoryScreen { get; set; }
+        public Action<Category> ShowCategoryScreen { get; set; }
         public ICommand ShowCategoryItemCommand { get; }
+        public ICommand CategoryDoubleClickCommand { get; }
         public ObservableCollection<Category> Categories { get; set; }
         public DbContext DbContext { get; set; } 
 
         public HomeScreenViewModel(DbContext dbContext)
         {
             DbContext = dbContext;
-            ShowCategoryItemCommand = new RelayCommand(_ => ShowCategoryScreen?.Invoke());
+            ShowCategoryItemCommand = new RelayCommand(
+                categoryObj => ShowCategoryScreen?.Invoke(categoryObj as Category)
+            );
+            CategoryDoubleClickCommand = new RelayCommand(OnCategoryDoubleClick);
+
             LoadCategories();
         }
 
@@ -28,6 +33,18 @@ namespace InterviewGenerator.ViewModels.Screens
         {
             var categories = DbContext.Set<Category>().ToList();
             Categories = new ObservableCollection<Category>(categories);
+        }
+
+        private void OnCategoryDoubleClick(object parameter)
+        {
+            var category = parameter as Category; // Cast parameter to Category
+
+            if (category != null)
+            {
+                // Navigate, open detail view, etc.
+                ShowCategoryItemCommand.Execute(category);
+                Console.WriteLine($"Double-clicked: {category.Name}");
+            }
         }
     }
 }
